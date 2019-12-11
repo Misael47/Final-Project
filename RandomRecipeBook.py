@@ -1,4 +1,7 @@
 import requests
+import docx
+
+document = docx.Document()
 
 first_recipe = requests.get('https://taco-1150.herokuapp.com/random/?full_taco=true').json()
 second_recipe = requests.get('https://taco-1150.herokuapp.com/random/?full_taco=true').json()
@@ -16,3 +19,7 @@ def getrandomrecipe(url):
             print(f'{base}: {spices}: {mix}: {additive}: {exterior}\n')
     except:
         print('Server not found, want to taco bout it')
+
+
+document.add_paragraph('Random Taco Cookbook', 'Title')
+document.save('Random_Taco_Cookbook.docx')
